@@ -1,0 +1,13 @@
+<html>
+<head>
+</head>
+<body>
+<form method = "POST" class = "POST-form" action = "/phone/register/">
+    {% csrf_token %}
+    {{ form.as_p}}
+    <button type ='submit'> register </button>
+</form>
+</body>
+</html>
+
+

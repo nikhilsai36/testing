@@ -1,0 +1,35 @@
+<html>
+<head>
+</head>
+<body>
+<center> Phone Information </center>
+<center>
+<table border="2px">
+   <thead>
+   <th> Name </th>
+   <th> ModelNo </th>
+   <th> IMEINo </th>
+   <th> DOM </th>
+   </thead>
+{% for i in phone_data %}
+    <tr>
+        <td> {{i.Name}} </td>
+        <td> {{i.ModelNo}} </td>
+        <td> {{i.IMEINo}} </td>
+        <td> {{i.DOM}} </td>
+        <td>
+             <a href = '/phone/edit/{{i.id}}'> Edit </a>
+        </td>
+        <td><a href="/phone/delete/{{i.id}}"> Delete </a></td>
+    </tr>
+
+ {% endfor %}
+</table>
+    <form method="POST" class="post-form" action="/phone/logout/">
+    {% csrf_token %}
+        <button type="submit">Logout</button>
+    </form>
+</body>
+</html>
+
+
