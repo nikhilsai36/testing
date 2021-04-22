@@ -2,6 +2,7 @@ from django.shortcuts import render,redirect
 from .models import Phone
 from .forms import PhoneForm
 from django.contrib.auth import authenticate
+from django.core.files.storage import FileSystemStorage
 
 # Create your views here.
 
@@ -10,15 +11,24 @@ def index(request):
     return render(request, 'index.html', {'phone_data':phone_data})
 
 
+# def upload(request):
+#     context = {}
+#     if request.method == 'POST':
+#         uploaded_file = request.FILES['document']
+#         fs = FileSystemStorage()
+#         name = fs.save(uploaded_file.name, uploaded_file)
+#         context['url'] = fs.url(name)
+#     return render(request, 'home.html', context)
+
+
 def register(request):
     if request.method == 'POST':
-        print(request.POST)
-        form = PhoneForm(request.POST)
-        print(form)
+        form = PhoneForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
             return redirect('/phone/index/')
-    form = PhoneForm()
+    else:
+        form = PhoneForm()
     return render(request, 'register.html', {'form': form})
 
 
@@ -52,7 +62,6 @@ def login(request):
         if user:
             return redirect('/phone/index/')
     return render(request, 'login.html', {})
-
 
 
 def logout(request):

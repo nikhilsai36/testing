@@ -6,6 +6,4 @@ class Phone(models.Model):
     ModelNo = models.CharField(max_length=15, null=True)
     IMEINo = models.IntegerField()
     DOM = models.DateField()
-
-
-
+    file = models.FileField(upload_to='documents/')

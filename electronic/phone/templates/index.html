@@ -10,6 +10,7 @@
    <th> ModelNo </th>
    <th> IMEINo </th>
    <th> DOM </th>
+   <th> file </th>
    </thead>
 {% for i in phone_data %}
     <tr>
@@ -17,6 +18,7 @@
         <td> {{i.ModelNo}} </td>
         <td> {{i.IMEINo}} </td>
         <td> {{i.DOM}} </td>
+        <td> {{i.file}} </td>
         <td>
              <a href = '/phone/edit/{{i.id}}'> Edit </a>
         </td>
