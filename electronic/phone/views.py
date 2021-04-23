@@ -57,3 +57,5 @@ def login(request):
 def logout(request):
     # logout(request)
     return redirect('/phone/login/')
+
+asdfghjkl;lkjhgfdsasdfghjkl;
